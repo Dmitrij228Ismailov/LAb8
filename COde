@@ -1,0 +1,30 @@
+employees_num = int(input('Введите количество сотруднников:  '))
+sum = 0
+distance_list = []
+price_list = []
+for i in range(employees_num):
+    distance = int(input('Введите расстояние до дома {0}-го сотрудника: '.format(i+1)))
+    distance_list.append(distance)
+for i in range(employees_num):
+    price = int(input('Введите тариф {0}-го такси:  '.format(i+1)))
+    price_list.append(price)
+m_distance_list = distance_list[:] 
+m_price_list = price_list[:]
+index_list_distance = []                  
+index_list_price = []
+max_distance = 0
+for i in range(employees_num):                              
+    index = m_distance_list.index(max(m_distance_list))
+    index_list_distance.append(index)
+    m_distance_list[index] = 0
+for i in range(employees_num):
+    index = m_price_list.index(min(m_price_list))
+    index_list_price.append(index)
+    m_price_list[index] = 10**10
+print('Такси для сотрудников соответственно:')
+for i in range(employees_num):
+    taxi_num = index_list_price[index_list_distance.index(i)]
+    print(taxi_num+1)
+for i in range(employees_num):
+    sum += distance_list[index_list_distance[i]]*price_list[index_list_price[i]]
+print('Сумма к оплате:', sum, 'рублей')
